@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Net.Security;
+using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Swish.Services
@@ -28,6 +30,7 @@ namespace Swish.Services
             _configuration = configuration;
             var handler = new HttpClientHandler
             {
+                SslProtocols = SslProtocols.Tls13 | SslProtocols.Tls12,
                 ServerCertificateCustomValidationCallback = (
                     sender,
                     certificate,
@@ -36,20 +39,22 @@ namespace Swish.Services
                 ClientCertificateOptions = ClientCertificateOption.Manual
             };
 
-            var thumbprints = new List<string>
-            {
-                _configuration.ClientCertificate,
-                _configuration.RootCertificateV1,
-                _configuration.RootCertificateV2
-            };
-
             var store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadOnly);
+            store.Open(OpenFlags.ReadWrite);
 
-            foreach (var thumbprint in thumbprints)
+            var certificates = new X509Certificate2Collection();
+            certificates.Import(_configuration.CertificatePath, _configuration.CertificatePassword, X509KeyStorageFlags.DefaultKeySet);
+
+            foreach (var certificate in certificates)
             {
-                var certificates = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
-                handler.ClientCertificates.AddRange(certificates);
+                if (certificate.HasPrivateKey)
+                {
+                    handler.ClientCertificates.Add(certificate);
+                }
+                else
+                {
+                    store.Add(certificate);
+                }
             }
 
             _client = new HttpClient(handler) {BaseAddress = new Uri(_configuration.BaseUrl)};

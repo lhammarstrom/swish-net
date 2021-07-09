@@ -4,8 +4,7 @@ namespace Swish.Models
     {
         public string BaseUrl { get; set; }
         public string CallbackUrl { get; set; }
-        public string ClientCertificate { get; set; }
-        public string RootCertificateV1 { get; set; }
-        public string RootCertificateV2 { get; set; }
+        public string CertificatePath { get; set; }
+        public string CertificatePassword { get; set; }
     }
 }

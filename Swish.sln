@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swish", "Swish\Swish.csproj", "{97A6EEFE-B788-4A48-9663-3C4220AAEAD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swish.Tests", "Swish.Tests\Swish.Tests.csproj", "{4521649B-293B-4A70-A27D-E205B03F7A98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97A6EEFE-B788-4A48-9663-3C4220AAEAD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97A6EEFE-B788-4A48-9663-3C4220AAEAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97A6EEFE-B788-4A48-9663-3C4220AAEAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97A6EEFE-B788-4A48-9663-3C4220AAEAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4521649B-293B-4A70-A27D-E205B03F7A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4521649B-293B-4A70-A27D-E205B03F7A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4521649B-293B-4A70-A27D-E205B03F7A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4521649B-293B-4A70-A27D-E205B03F7A98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

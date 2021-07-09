@@ -1,0 +1,12 @@
+/Users/leni/Projects/Swish/Swish/bin/Debug/net5.0/Swish.deps.json
+/Users/leni/Projects/Swish/Swish/bin/Debug/net5.0/Swish.dll
+/Users/leni/Projects/Swish/Swish/bin/Debug/net5.0/ref/Swish.dll
+/Users/leni/Projects/Swish/Swish/bin/Debug/net5.0/Swish.pdb
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/Swish.csprojAssemblyReference.cache
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/Swish.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/Swish.AssemblyInfoInputs.cache
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/Swish.AssemblyInfo.cs
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/Swish.csproj.CoreCompileInputs.cache
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/Swish.dll
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/ref/Swish.dll
+/Users/leni/Projects/Swish/Swish/obj/Debug/net5.0/Swish.pdb

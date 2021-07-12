@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Swish.Models;
 using Swish.Services;
@@ -12,13 +13,14 @@ namespace Swish.Tests
 
         public Test()
         {
+            // ugly hack
+            var directory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory())?.FullName)?.FullName)?.FullName;
             _swish = new SwishApi(new SwishApiDetails
             {
                 BaseUrl = "https://cpc.getswish.net/swish-cpcapi",
-                CallbackUrl = null,
-                ClientCertificate = "F06644FAF53150D5B31716ABF121FE112A225AF1",
-                RootCertificateV1 = "A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436",
-                RootCertificateV2 = "03BFF7B54C712504C5BE5A8528163C931618A3C0"
+                CallbackUrl = "https://example.com/api/swishcb/paymentrequests",
+                CertificatePath = directory + "/Swish_Merchant_TestCertificate_1234679304.p12",
+                CertificatePassword = "swish"
             });
         }
 

@@ -14,7 +14,12 @@ namespace Swish.Tests
         public Test()
         {
             // ugly hack
-            var directory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory())?.FullName)?.FullName)?.FullName;
+            var directory =
+                Directory.GetParent(
+                    Directory.GetParent(
+                        Directory.GetParent(
+                            Directory.GetCurrentDirectory())?.FullName!)?.FullName!)?.FullName;
+
             _swish = new SwishApi(new SwishApiDetails
             {
                 BaseUrl = "https://cpc.getswish.net/swish-cpcapi",

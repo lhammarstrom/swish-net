@@ -3,8 +3,6 @@ using Swish.Models;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Net.Security;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 
@@ -30,7 +28,7 @@ namespace Swish.Services
             _configuration = configuration;
             var handler = new HttpClientHandler
             {
-                SslProtocols = SslProtocols.Tls13 | SslProtocols.Tls12,
+                SslProtocols = SslProtocols.Tls12,
                 ServerCertificateCustomValidationCallback = (
                     sender,
                     certificate,

@@ -1,7 +1,6 @@
 using System;
+using System.Linq;
 using System.Net.Http;
-using Flurl;
-using Flurl.Http;
 using Swish.Models;
 using System.Threading.Tasks;
 using System.Security.Cryptography.X509Certificates;
@@ -39,29 +38,6 @@ namespace Swish.Services
             var phoneAlias = phoneNumber.Replace(" ", "").Replace("+", "");
             if (phoneAlias.StartsWith("0")) phoneAlias = phoneAlias.Substring(1, phoneAlias.Length);
 
-            // using var certificate = new X509Certificate2(
-            //     _configuration.CertificateAsBytes,
-            //     _configuration.CertificatePassword,
-            //     X509KeyStorageFlags.EphemeralKeySet);
-            //
-            // var client = new FlurlClient(
-            //     _configuration.BaseUrl.AppendPathSegments("api", "v2", "paymentrequests", reference)).Configure(
-            //     c => c.HttpClientFactory = new SwishHttpFactory(certificate));
-            //
-            // var request = client.Request();
-            //
-            // var result =
-            //     await request.PutJsonAsync(new
-            //     {
-            //         amount = amountToPay,
-            //         payerAlias = phoneAlias,
-            //         message = messageToCustomer,
-            //         payeePaymentReference = reference,
-            //         currency = SwishDefaults.Currency.Sek,
-            //         payeeAlias = receiverAlias,
-            //         callbackUrl = _configuration.CallbackUrl
-            //     });
-            
             var requestData = new
             {
                 payeePaymentReference = reference,
@@ -85,12 +61,14 @@ namespace Swish.Services
             };
 
             var response = client.SendAsync(httpRequestMessage).Result;
-
-            // return result.ResponseMessage.IsSuccessStatusCode
-            //     ? (false, "")
-            //     : (true, await result.ResponseMessage.Content.ReadAsStringAsync());
-
-            return (true, "asd");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                return (false, string.Empty);
+            }
+            
+            var error = response.Content.ReadAsStringAsync().Result;
+            return (true, error);
         }
         
         private void PrepareHttpClientAndHandler(out HttpClientHandler handler, out HttpClient client)
